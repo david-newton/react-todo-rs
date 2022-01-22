@@ -10,7 +10,7 @@ const ListItem = ({ item, onDeleteClicked, onCompleteClicked }) => {
         </button>;
 
     return (
-        <div className="item-container">
+        <div className="list-item-container">
             <h4>{itemText}</h4>
             <div className="button-container">
                 {completeButton}

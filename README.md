@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Simple To Do List App.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App was spun up with create-react-app, Remaining notes apply to general react apps.
 
 ## Available Scripts
 

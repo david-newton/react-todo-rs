@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 
-
-
-
 const ClockAngle = () => {
     const [hours, setHours] = useState('');
     const [minutes, setMinutes] = useState('');
@@ -70,9 +67,7 @@ const ClockAngle = () => {
                 <button type="submit">Submit</button>
             </form>
             <br />
-            {degrees === -1 ? '' : `${degrees} degrees`}
-            
-            
+            {degrees === -1 ? '' : `${degrees} degrees`}          
         </div>
     );
 };

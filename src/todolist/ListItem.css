@@ -1,4 +1,7 @@
 .list-item-container{
     border-style: solid;
     border-width: medium;
+    padding: 10x;
+    margin: 10x;
+    width: 33%;
 }

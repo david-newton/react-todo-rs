@@ -1,4 +1,4 @@
-import { COMPLETE_TASK, CREATE_TASK, REMOVE_TASK } from "../actions/actions";
+import { COMPLETE_ALL, COMPLETE_TASK, CREATE_TASK, REMOVE_TASK } from "../actions/actions";
 
 export const todolist = (state = [], action) => {
     const { type, payload } = action;
@@ -31,6 +31,14 @@ export const todolist = (state = [], action) => {
                 }
                 return item;
             });
+        }
+        case COMPLETE_ALL: {
+            return state.map(item => {
+                if (!item.isComplete) {
+                    return {...item, isComplete: true}
+                }
+                return item;
+            })
         }
         default:
             return state;

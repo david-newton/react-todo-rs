@@ -15,3 +15,10 @@ export const completeTask = data => ({
     type: COMPLETE_TASK,
     payload: { data }
 });
+
+export const COMPLETE_ALL = 'COMPLETE_ALL';
+export const completeAll = data => ({
+    type: COMPLETE_ALL,
+    patload: {}
+});
+

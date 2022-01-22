@@ -6,17 +6,28 @@ import NewListForm  from './NewItemForm';
 import ListItem from './ListItem';
 
 //actions
-import { removeTask, completeTask } from './actions/actions';
+import { removeTask, completeTask, completeAll } from './actions/actions';
 
 //styles
 import './ToDoList.css';
 
-const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked }) => (
-    <div className="todo-list-wrapper">
-        <NewListForm />
-        {listItems.map(item => <ListItem item={item} onDeleteClicked={onDeleteClicked} onCompleteClicked={onCompleteClicked}/>)}
-    </div>
-);
+const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onCompleteAllClicked }) => {
+    const completeAllButton = 
+        listItems.some(item => !item.isComplete) ?
+            <button
+                onClick={() => onCompleteAllClicked()} 
+                className="complete-all-button">
+                    Complete All
+            </button> : null;
+
+    return (
+        <div className="todo-list-wrapper">
+            <NewListForm />
+            {listItems.map(item => <ListItem item={item} onDeleteClicked={onDeleteClicked} onCompleteClicked={onCompleteClicked}/>)}
+            {completeAllButton}
+        </div>
+    );
+};
 
 const mapStateToProps = state => ({
     listItems: state.todolist,
@@ -25,6 +36,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     onDeleteClicked: data => dispatch(removeTask(data)),
     onCompleteClicked: data => dispatch(completeTask(data)),
+    onCompleteAllClicked: () => dispatch(completeAll()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);

@@ -1,10 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+
 import ToDoList from './todolist/ToDoList';
+import ClockAngle from './clockAngle/ClockAngle';
 
 const App = () => (
     <div className="App">
-        <ToDoList />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<ToDoList />} />
+                <Route path="/clockangle" element={<ClockAngle />} />
+            </Routes>
+        </BrowserRouter>
     </div>
 )
 

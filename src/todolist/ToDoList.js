@@ -22,6 +22,7 @@ const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onComple
 
     return (
         <div className="todo-list-wrapper">
+            <h1 className="form-title">Tasks</h1>
             <NewListForm />
             {listItems.map(item => <ListItem item={item} onDeleteClicked={onDeleteClicked} onCompleteClicked={onCompleteClicked}/>)}
             {completeAllButton}

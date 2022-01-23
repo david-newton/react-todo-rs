@@ -14,7 +14,7 @@ export const todolist = (state = [], action) => {
                 data,
                 isComplete: false
             };
-            //TODO -- probably cleaner to use spread here
+            //TODO -- would possibly make more sense to put this at the front of the list
             return state.concat(newItem);
         }
         case REMOVE_TASK: {

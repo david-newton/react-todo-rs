@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Row, Col, Input, Button, Form, FormGroup, Label} from 'reactstrap';
 
 const ClockAngle = () => {
     const [hours, setHours] = useState('');
@@ -57,17 +58,43 @@ const ClockAngle = () => {
     return (
         <div className="clock-angle-wrapper">
             <h1 className="form-title">Find the angle between analog clock hands given the hour/minutes</h1>
-            <form onSubmit={handleSubmit}>
-                <label> Hours (HH)
-                    <input type="number" onChange={event => setHours(event.target.value)}/>
-                </label>
-                <label> Minutes (MM)
-                    <input type="number" onChange={event => setMinutes(event.target.value)}/>
-                </label>
-                <button type="submit">Submit</button>
-            </form>
+            <Form onSubmit={handleSubmit}>
+                <Row style={{margin: 10}}>
+                    <Col md={3}>
+                        <FormGroup>
+                            <Label> Hours (HH):</Label>
+                            <Input type="number" onChange={event => setHours(event.target.value)}/>
+                        </FormGroup>
+                    </Col>
+                </Row>
+                <Row style={{margin: 10}}>
+                    <Col md={3}>
+                        <FormGroup>
+                            <Label> Minutes (MM): </Label>
+                            <Input type="number" onChange={event => setMinutes(event.target.value)}/>
+                        </FormGroup>
+                    </Col>
+                </Row>
+                <Row style={{margin: 10}}>
+                    <Col md={3}>
+                        <FormGroup>
+                            <Button type="submit">Submit</Button>
+                        </FormGroup>
+                    </Col>
+                </Row>
+            </Form>
             <br />
-            {degrees === -1 ? '' : `${degrees} degrees`}          
+            <Row>
+                <Col
+                    className='bg-light border'
+                    sm={{
+                        offset: 1,
+                        size: 'auto'
+                    }}
+                >
+                    {degrees === -1 ? '' : <h2>{degrees} degrees</h2>}   
+                </Col>
+            </Row>         
         </div>
     );
 };

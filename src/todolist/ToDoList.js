@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 
 //page specific imports
 import NewListForm  from './NewItemForm';
@@ -14,11 +15,11 @@ import './ToDoList.css';
 const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onCompleteAllClicked }) => {
     const completeAllButton = 
         listItems.some(item => !item.isComplete) ?
-            <button
+            <Button
                 onClick={() => onCompleteAllClicked()} 
                 className="complete-all-button">
                     Complete All
-            </button> : null;
+            </Button> : null;
 
     return (
         <div className="todo-list-wrapper">

@@ -1,20 +1,4 @@
-.list-item-container-complete{
-    border-style: solid;
-    border-width: medium;
-    padding: 25px;
-    margin: 25px;
-    width: 33%;
-    background-color: darkgrey;
-}
 
-.list-item-container{
-    border-style: solid;
-    border-width: medium;
-    padding: 25px;
-    margin: 25px;
-    width: 33%;
-    background-color:lightgray;
-}
 
 .complete-button{
     margin: 10px;

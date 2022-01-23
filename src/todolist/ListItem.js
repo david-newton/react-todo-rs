@@ -1,24 +1,32 @@
 import React from 'react';
+import { Button, Row, Col, Container } from 'reactstrap';
 import './ListItem.css';
 
 const ListItem = ({ item, onDeleteClicked, onCompleteClicked }) => {
     //if item is complete strikeout text and hide complete button
     const itemText = item.isComplete ? <p><del>{item.data}</del></p> : <p>{item.data}</p>
     const completeButton = item.isComplete ? null : 
-        <button className="complete-button" onClick={() => onCompleteClicked(item.data)}>
+        <Button className="complete-button" onClick={() => onCompleteClicked(item.data)}>
             Task Completed 
-        </button>;
+        </Button>;
 
-    return (
-        <div className={item.isComplete ? "list-item-container-complete" : "list-item-container"}>
-            <h4>{itemText}</h4>
-            <div className="button-container">
-                {completeButton}
-                <button 
-                    onClick={() => onDeleteClicked(item.data)}
-                    className="delete-button">Delete</button>
-            </div>
-        </div>
+    return ( 
+        <Container style={{margin: '25px'}} >
+            <Row xs="4" >
+                <Col className="bg-light border" xs="6">
+                    <h4>{itemText}</h4>
+                </Col>
+            </Row>
+            <Row xs="4">
+                <Col className="bg-light border" xs="6">
+                    {completeButton}
+                    <Button 
+                        onClick={() => onDeleteClicked(item.data)}
+                        className="delete-button">Delete</Button>
+                </Col>
+            </Row>
+        </Container>
+            
     );
 };
 

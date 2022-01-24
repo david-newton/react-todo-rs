@@ -13,6 +13,7 @@ import { removeTask, completeTask, completeAll } from './actions/actions';
 import './ToDoList.css';
 
 const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onCompleteAllClicked }) => {
+    //TODO - persistor can cause listItems to be undefined/null - should protect against this or remove in memory persisting
     const completeAllButton = 
         listItems.some(item => !item.isComplete) ?
             <Button

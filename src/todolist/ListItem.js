@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Row, Col, Container } from 'reactstrap';
+import { Button, Row, Col, Container, ButtonGroup } from 'reactstrap';
 import './ListItem.css';
 
 const ListItem = ({ item, onDeleteClicked, onCompleteClicked }) => {
     //if item is complete strikeout text and hide complete button
-    const itemText = item.isComplete ? <p><del>{item.data}</del></p> : <p>{item.data}</p>
+    const itemText = item.isComplete ? <p><del>{item.data}</del></p> : <p>{item.data}</p>;
     const completeButton = item.isComplete ? null : 
         <Button className="complete-button" onClick={() => onCompleteClicked(item.data)}>
             Task Completed 
@@ -19,10 +19,13 @@ const ListItem = ({ item, onDeleteClicked, onCompleteClicked }) => {
             </Row>
             <Row xs="4">
                 <Col className="bg-light border" xs="6">
-                    {completeButton}
-                    <Button 
-                        onClick={() => onDeleteClicked(item.data)}
-                        className="delete-button">Delete</Button>
+                    <ButtonGroup>
+                        {completeButton}
+                        <Button 
+                            onClick={() => onDeleteClicked(item.data)}
+                            className="delete-button">Delete
+                        </Button>
+                    </ButtonGroup>
                 </Col>
             </Row>
         </Container>

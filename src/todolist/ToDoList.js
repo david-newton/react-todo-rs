@@ -9,12 +9,10 @@ import ListItem from './ListItem';
 //actions
 import { removeTask, completeTask, completeAll } from './actions/actions';
 
-import { displayAlert } from './thunks/thunks';
-
 //styles
 import './ToDoList.css';
 
-const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onCompleteAllClicked, onDisplayAlertClicked }) => {
+const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onCompleteAllClicked }) => {
     //TODO - persistor can cause listItems to be undefined/null - should protect against this or remove in memory persisting
     const completeAllButton = 
         listItems.some(item => !item.isComplete) ?
@@ -28,7 +26,7 @@ const ToDoList = ({ listItems = [], onDeleteClicked, onCompleteClicked, onComple
         <div className="todo-list-wrapper">
             <h1 className="form-title">Tasks</h1>
             <NewListForm />
-            {listItems.map(item => <ListItem key={item.data} item={item} onDeleteClicked={onDeleteClicked} onCompleteClicked={onDisplayAlertClicked}/>)}
+            {listItems.map(item => <ListItem key={item.data} item={item} onDeleteClicked={onDeleteClicked} onCompleteClicked={onCompleteClicked}/>)}
             {completeAllButton}
         </div>
     );
@@ -42,7 +40,6 @@ const mapDispatchToProps = dispatch => ({
     onDeleteClicked: data => dispatch(removeTask(data)),
     onCompleteClicked: data => dispatch(completeTask(data)),
     onCompleteAllClicked: () => dispatch(completeAll()),
-    onDisplayAlertClicked: () => dispatch(displayAlert()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);

@@ -19,6 +19,23 @@ export const completeTask = data => ({
 export const COMPLETE_ALL = 'COMPLETE_ALL';
 export const completeAll = data => ({
     type: COMPLETE_ALL,
-    patload: {}
+    payload: {}
+});
+
+//New Thunk Actions
+export const LOAD_TASKS_START = 'LOAD_TASKS_START';
+export const loadTasksStart = () => ({
+    type: LOAD_TASKS_START
+});
+
+export const LOAD_TASKS_SUCCESS = 'LOAD_TASKS_SUCCESS';
+export const loadTasksSuccess = data => ({
+    type: LOAD_TASKS_SUCCESS,
+    payload: { data }
+});
+
+export const LOAD_TASKS_FAIL = 'LOAD_TASKS_FAIL';
+export const loadTasksFail = () => ({
+    type: LOAD_TASKS_FAIL
 });
 

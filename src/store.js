@@ -1,14 +1,17 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 //NOTE - first time trying redux persist - wip - using default doc suggestions
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
-//reducers
-import { todolist } from './todolist/reducers/reducers';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const reducers = {todolist};
+//reducers
+import { todolist, isLoading } from './todolist/reducers/reducers';
+
+const reducers = {todolist, isLoading};
 const persistConfig = {
     key: 'root',
     storage,
@@ -20,5 +23,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const configureStore = () => 
     createStore(
         persistedReducer,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+        composeWithDevTools(
+            applyMiddleware(thunk)
+        )
     );

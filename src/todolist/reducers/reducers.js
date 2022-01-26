@@ -1,4 +1,25 @@
-import { COMPLETE_ALL, COMPLETE_TASK, CREATE_TASK, REMOVE_TASK } from "../actions/actions";
+import { 
+    COMPLETE_ALL, 
+    COMPLETE_TASK, 
+    CREATE_TASK, 
+    REMOVE_TASK,
+    LOAD_TASKS_START,
+    LOAD_TASKS_SUCCESS,
+    LOAD_TASKS_FAIL
+} from "../actions/actions";
+
+export const isLoading = (state = false, action) => {
+    const { type } = action;
+    switch (type) {
+        case LOAD_TASKS_START: 
+            return true;       
+        case LOAD_TASKS_SUCCESS:
+        case LOAD_TASKS_FAIL:
+            return false;
+        default:
+            return state;
+    }
+}
 
 export const todolist = (state = [], action) => {
     const { type, payload } = action;
@@ -40,6 +61,12 @@ export const todolist = (state = [], action) => {
                 return item;
             })
         }
+        case LOAD_TASKS_SUCCESS: {
+            const { todolist } = payload;
+            return todolist;
+        }
+        case LOAD_TASKS_START:
+        case LOAD_TASKS_FAIL:
         default:
             return state;
     }
